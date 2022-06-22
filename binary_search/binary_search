@@ -1,0 +1,22 @@
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        # Discussion
+        # Divide the array half every time based on current value
+        # Stopping condition: if our subarray is single value
+        # Check: array slicing is good syntax but does it impact runtime?
+        
+        left = 0
+        right = len(nums) - 1 
+        i = left + ((right - left) // 2)
+        
+        while left <= right:
+            if target == nums[i]:
+                return i
+            elif target > nums[i]:
+                left = i + 1
+            elif target < nums[i]:
+                right = i - 1
+                
+            i = left + ((right - left) // 2)
+            
+        return -1
